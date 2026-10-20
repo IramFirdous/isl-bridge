@@ -44,7 +44,7 @@ export default function App() {
     ]);
     setHealth(h);
     setCatalog(s);
-    if (c.consent) setConsent(c.consent);
+    setConsent(c.consent || null);
     setRuns(r.runs);
     setEvents(e.events);
   }
@@ -53,16 +53,38 @@ export default function App() {
     refresh().catch((err) => setError(err.message));
   }, []);
 
-  async function grantConsent(granted) {
-    setError("");
-    try {
-      const record = await api.consent({ ...form, granted });
-      setConsent(granted ? record : null);
-      await refresh();
-    } catch (err) {
-      setError(err.message);
+
+async function grantConsent(granted) {
+  setError("");
+
+  try {
+    const record = await api.consent({ ...form, granted });
+
+    if (!granted) {
+      // Stop browser speech recognition if it is active.
+      try {
+        recRef.current?.stop();
+      } catch {
+        // It may already be stopped.
+      }
+
+      recRef.current = null;
+      setListening(false);
+
+      // Clear results that should not remain active after revocation.
+      setRecognition(null);
+      setSpeechOut(null);
+      setSttOut(null);
+      setTranscript("");
     }
+
+    setConsent(record);
+    await refresh();
+  } catch (err) {
+    setError(err.message);
   }
+}
+
 
 
 

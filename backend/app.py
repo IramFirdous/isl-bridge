@@ -75,16 +75,29 @@ class RunUpdateIn(BaseModel):
     input_extra: dict | None = None
 
 
+
 def _require_consent(consent_id: int | None, *, camera: bool) -> dict:
     if consent_id is None:
         raise HTTPException(
             status_code=403,
             detail="Consent is required before camera or microphone use. Record it on the Safety tab.",
         )
-    record = db.get_consent(consent_id)
-    if not record or not record.get("granted"):
-        raise HTTPException(status_code=403, detail="No granted consent record for this session.")
-    return record
+
+    # The requested record must be the most recent consent record.
+    latest = db.latest_consent()
+
+    if (
+        not latest
+        or not latest.get("granted")
+        or latest.get("id") != consent_id
+    ):
+        raise HTTPException(
+            status_code=403,
+            detail="Consent is missing, refused, or revoked. Please provide consent again.",
+        )
+
+    return latest
+
 
 
 @app.get("/api/health")
@@ -127,8 +140,7 @@ def create_consent(body: ConsentIn):
 
 @app.get("/api/consent/latest")
 def latest_consent():
-    record = db.latest_granted_consent()
-    return {"consent": record}
+    return {"consent": db.latest_consent()}
 
 
 @app.post("/api/recognize")

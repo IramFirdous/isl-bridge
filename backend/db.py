@@ -208,9 +208,18 @@ def latest_granted_consent() -> dict | None:
     with connect() as conn:
         return row_to_dict(
             conn.execute(
-                "SELECT * FROM consent WHERE granted = 1 ORDER BY id DESC LIMIT 1"
+                "SELECT * FROM consent ORDER BY id DESC LIMIT 1"
             ).fetchone()
         )
+
+def latest_consent() -> dict | None:
+    with connect() as conn:
+        return row_to_dict(
+            conn.execute(
+                "SELECT * FROM consent ORDER BY id DESC LIMIT 1"
+            ).fetchone()
+        )
+
 
 
 def add_event(kind: str, payload: dict) -> dict:

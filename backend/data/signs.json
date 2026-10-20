@@ -1,0 +1,110 @@
+{
+  "sign_language": "Indian Sign Language (ISL)",
+  "sign_language_code": "ISL",
+  "scope": "Isolated word-level demo subset. Not a full ISL interpreter and not ISL grammar.",
+  "data_origin": "Glosses scoped from publicly documented ISL teaching materials and the INCLUDE lexicon (Sridhar et al., ACM MM 2020, CC BY-NC-SA 4.0, non-commercial). Live recognition uses MediaPipe Hands landmarks plus a local geometric classifier. VerbX is not used for gesture recognition.",
+  "confidence_threshold": 0.72,
+  "languages": ["en", "hi"],
+  "signs": [
+    {
+      "id": "HELLO",
+      "gloss": "HELLO",
+      "en": "Hello",
+      "hi": "नमस्ते",
+      "aliases": ["hello", "hi", "hey", "namaste", "namaskar", "नमस्ते", "नमस्कार"],
+      "how": "Open palm facing the camera, wave left and right.",
+      "hands": 1,
+      "include_category": "Greetings"
+    },
+    {
+      "id": "YES",
+      "gloss": "YES",
+      "en": "Yes",
+      "hi": "हाँ",
+      "aliases": ["yes", "yeah", "yep", "haan", "ha", "हाँ", "जी"],
+      "how": "Closed fist, nod the hand up and down (like a head nod).",
+      "hands": 1,
+      "include_category": "Responses"
+    },
+    {
+      "id": "NO",
+      "gloss": "NO",
+      "en": "No",
+      "hi": "नहीं",
+      "aliases": ["no", "nope", "nahi", "nahin", "नहीं"],
+      "how": "Index finger only, wave side to side.",
+      "hands": 1,
+      "include_category": "Responses"
+    },
+    {
+      "id": "THANK_YOU",
+      "gloss": "THANK YOU",
+      "en": "Thank you",
+      "hi": "धन्यवाद",
+      "aliases": ["thank you", "thanks", "thankyou", "dhanyavad", "dhanyavaad", "धन्यवाद", "शुक्रिया"],
+      "how": "Open palm near the face (high in the frame), then move slightly forward/down.",
+      "hands": 1,
+      "include_category": "Courtesy"
+    },
+    {
+      "id": "PLEASE",
+      "gloss": "PLEASE",
+      "en": "Please",
+      "hi": "कृपया",
+      "aliases": ["please", "kripya", "kripaya", "कृपया"],
+      "how": "Open palm in the middle of the frame, small circular motion.",
+      "hands": 1,
+      "include_category": "Courtesy"
+    },
+    {
+      "id": "HELP",
+      "gloss": "HELP",
+      "en": "Help",
+      "hi": "मदद",
+      "aliases": ["help", "madad", "sahayata", "मदद", "सहायता"],
+      "how": "Two hands: one closed fist resting on the other open palm, close together.",
+      "hands": 2,
+      "include_category": "Needs"
+    },
+    {
+      "id": "WATER",
+      "gloss": "WATER",
+      "en": "Water",
+      "hi": "पानी",
+      "aliases": ["water", "paani", "pani", "पानी"],
+      "how": "Three fingers up (index, middle, ring) — W-shape approximation used in this demo set.",
+      "hands": 1,
+      "include_category": "Needs"
+    },
+    {
+      "id": "NAME",
+      "gloss": "NAME",
+      "en": "Name",
+      "hi": "नाम",
+      "aliases": ["name", "naam", "नाम"],
+      "how": "Index and middle fingers extended, small tapping (up-down) motion.",
+      "hands": 1,
+      "include_category": "People"
+    },
+    {
+      "id": "GOOD",
+      "gloss": "GOOD",
+      "en": "Good",
+      "hi": "अच्छा",
+      "aliases": ["good", "great", "accha", "acha", "अच्छा", "अच्छे"],
+      "how": "Thumbs up, hand mostly still.",
+      "hands": 1,
+      "include_category": "Quality"
+    },
+    {
+      "id": "STOP",
+      "gloss": "STOP",
+      "en": "Stop",
+      "hi": "रुकिए",
+      "aliases": ["stop", "halt", "ruk", "rukie", "rukiye", "रुकिए", "रुको"],
+      "how": "Open palm facing the camera, held still.",
+      "hands": 1,
+      "include_category": "Control"
+    }
+  ]
+}
